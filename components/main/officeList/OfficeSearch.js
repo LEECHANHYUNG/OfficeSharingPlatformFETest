@@ -31,7 +31,8 @@ const Wrapper = styled.div`
     padding-right: 20px;
   }
   @media screen and (max-width: 1170px) {
-    top: 50vh;
+    position: absolute;
+    top: 0px;
     width: 100%;
   }
 `;

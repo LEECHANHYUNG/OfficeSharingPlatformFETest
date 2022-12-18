@@ -67,6 +67,7 @@ const Item = ({ images, type, typeEng, price, timeUnit, availablePerson }) => {
   const [disabledDateList, setDisabledDateList] = useState([]);
   const [ableDateList, setAbleDateList] = useState([]);
 
+  console.log(images);
   const router = useRouter();
   const placeId = router.query.id;
   const dispatch = useDispatch();
@@ -124,7 +125,7 @@ const Item = ({ images, type, typeEng, price, timeUnit, availablePerson }) => {
     <ItemCard>
       <div className="img">
         <Image
-          src={images}
+          src={images ? images : '/image/default-image.gif'}
           layout="fill"
           objectFit="cover"
           objectPosition="center"

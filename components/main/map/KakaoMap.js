@@ -15,7 +15,7 @@ const KaKaoMap = styled(Map)`
   @media (max-width: 1170px) {
     width: 100%;
     padding-top: 216px;
-    height: 50vh;
+    height: 57vh;
   }
 `;
 const KakaoMap = (props) => {

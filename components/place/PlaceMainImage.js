@@ -57,7 +57,7 @@ const PlaceMainImage = ({ images }) => {
     <Wrapper>
       <div className="left">
         <Image
-          src={images[1]}
+          src={images[1] ? images[1] : '/image/default-image.gif'}
           layout="fill"
           objectFit="cover"
           objectPosition="center"
@@ -68,7 +68,7 @@ const PlaceMainImage = ({ images }) => {
       <div className="right">
         <div className="right-item">
           <Image
-            src={images[2]}
+            src={images[2] ? images[2] : '/image/default-image.gif'}
             layout="fill"
             objectFit="cover"
             objectPosition="center"
@@ -78,7 +78,7 @@ const PlaceMainImage = ({ images }) => {
         </div>
         <div className="right-item">
           <Image
-            src={images[3]}
+            src={images[3] ? images[3] : '/image/default-image.gif'}
             layout="fill"
             objectFit="cover"
             objectPosition="center"
@@ -88,7 +88,7 @@ const PlaceMainImage = ({ images }) => {
         </div>
         <div className="right-item">
           <Image
-            src={images[4]}
+            src={images[4] ? images[4] : '/image/default-image.gif'}
             layout="fill"
             objectFit="cover"
             objectPosition="center"
@@ -98,7 +98,7 @@ const PlaceMainImage = ({ images }) => {
         </div>
         <div className="right-item">
           <Image
-            src={images[5]}
+            src={images[5] ? images[5] : '/image/default-image.gif'}
             layout="fill"
             objectFit="cover"
             objectPosition="center"
