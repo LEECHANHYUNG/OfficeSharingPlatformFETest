@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/router';
 import React from 'react';
 import { useRef } from 'react';
 import { useDispatch } from 'react-redux';
@@ -7,10 +8,11 @@ import { placeSliceActions } from '../../../store/place';
 import Button from '../../ui/Button';
 import Input from '../../ui/Input';
 import TextArea from '../../ui/TextArea';
-const NewQna = ({ addNewQna }) => {
+const NewQna = ({ addNewQna, setQnaData }) => {
   const titleInputRef = useRef();
   const session = useSession();
   const dispatch = useDispatch();
+  const router = useRouter();
   const addQnaHandler = async (e) => {
     try {
       const response = await axios({
@@ -24,6 +26,20 @@ const NewQna = ({ addNewQna }) => {
       });
       if (response.status === 200) {
         alert('1:1문의가 등록되었습니다.');
+        router.replace('/mypage/qna');
+        setQnaData({
+          answerData: { answerContext: '' },
+          questionData: {
+            inquiryContext: e.target.previousSibling.value,
+            inquiryId: 'newqna',
+            inquiryTitle: titleInputRef.current.value,
+            processingStatus: false,
+            writtenDate: new Date()
+              .toLocaleDateString()
+              .replace(/. /g, '-')
+              .slice(0, -1),
+          },
+        });
         addNewQna(false);
       } else {
         throw new Error();

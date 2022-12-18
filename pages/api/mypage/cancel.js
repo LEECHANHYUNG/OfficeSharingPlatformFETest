@@ -3,7 +3,7 @@ import axios from 'axios';
 const handler = async (req, res) => {
   try {
     const response = await axios({
-      url: `${process.env.baseURL}mypage/cancel`,
+      url: `${process.env.baseURL}payment/nicepaycancel`,
       method: 'post',
       rejectUnauthorized: false,
       headers: {

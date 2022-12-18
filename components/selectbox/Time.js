@@ -63,9 +63,9 @@ const Time = (props) => {
     return (
       <Select onChange={startTimeHandler}>
         <option value="24">시작 시간</option>
-        {[...new Array(23 - currentTime)].map((elem, idx) => (
-          <option value={idx + 1 + currentTime} key={idx}>
-            {idx + 1 + currentTime}:00
+        {[...new Array(25)].map((elem, idx) => (
+          <option value={idx + 1} key={idx}>
+            {idx + 1}:00
           </option>
         ))}
       </Select>

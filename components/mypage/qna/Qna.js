@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useSession } from 'next-auth/react';
 import React from 'react';
+import { useEffect } from 'react';
 import { useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import styled from 'styled-components';
@@ -57,6 +58,7 @@ const Qna = ({ item, paginationData }) => {
   const [totalPage, setTotalPage] = useState(paginationData);
   const [items, setItems] = useState(item);
   const [newQna, setNewQna] = useState(false);
+  const [qnaData, setQnaData] = useState(null);
   const session = useSession();
   const addNewQnaHandler = () => {
     setNewQna(true);
@@ -81,6 +83,17 @@ const Qna = ({ item, paginationData }) => {
       console.error(error);
     }
   };
+  useEffect(() => {
+    const itemsArr = [qnaData];
+    if (qnaData) {
+      Object.values(item).map((elem, idx) => {
+        if (idx <= 6) {
+          itemsArr.push(elem);
+        }
+      });
+      setItems(Object.assign({}, itemsArr));
+    }
+  }, [qnaData]);
   return (
     <Wrapper>
       {!newQna ? (
@@ -111,6 +124,9 @@ const Qna = ({ item, paginationData }) => {
       ) : (
         <div>
           <NewQna
+            setQnaData={(data) => {
+              setQnaData(data);
+            }}
             addNewQna={(state) => {
               setNewQna(state);
             }}

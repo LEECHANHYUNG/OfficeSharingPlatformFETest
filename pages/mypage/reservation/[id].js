@@ -34,7 +34,7 @@ const ReservationDetail = (props) => {
     <Wrapper>
       <Header userData={props.userData} />
       <Banner />
-      <Detail resData={props.resData} />
+      <Detail resData={props.resData} payData={props.payData} />
     </Wrapper>
   );
 };

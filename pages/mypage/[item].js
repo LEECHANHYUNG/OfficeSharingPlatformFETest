@@ -65,7 +65,10 @@ const Mypage = (props) => {
       )}
       {router.query.item === 'mileage' && (
         <section className="item">
-          <Point item={props.mileageData} />
+          <Point
+            item={props.mileageData}
+            paginationData={props.paginationData.maxPage}
+          />
         </section>
       )}
       {router.query.item === 'qna' && (

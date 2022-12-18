@@ -13,11 +13,6 @@ const StyledCard = styled(Card)`
     border-bottom: 1px solid #111;
     padding-bottom: 10px;
   }
-  .pay-type {
-    position: absolute;
-    top: 30px;
-    left: 200px;
-  }
   main {
     padding: 50px 0;
     display: flex;
@@ -56,26 +51,27 @@ const StyledCard = styled(Card)`
     }
   }
 `;
-const Payment = ({ payData, totalPrice }) => {
-  console.log(payData);
+const Payment = ({ refund }) => {
   return (
     <StyledCard>
-      <h1>결제 내역</h1>
-      <div className="pay-type">
-        <div className="data">선결제</div>
-      </div>
+      <h1>환불 내역</h1>
       <main>
         <div className="total-price">
-          <h3>총 결제 금액</h3>
-          <div className="data">{totalPrice.toLocaleString()}</div>
+          <h3>환불 일자</h3>
+          <div className="data">{refund?.refundDate || '2022-12-18'}</div>
+          <div className="data">{refund?.refundTime || '21:18:59'}</div>
         </div>
         <div className="real-price">
-          <h3>실 결제 금액</h3>
-          <div className="data">{payData.payPrice.toLocaleString()}</div>
+          <h3>환불 금액</h3>
+          <div className="data">
+            {refund?.refundPrice.toLocaleString() || (14000).toLocaleString()}
+          </div>
         </div>
         <div className="mileage-price">
           <h3>마일리지 결제 금액</h3>
-          <div className="data">{payData.payMileage.toLocaleString()}</div>
+          <div className="data">
+            {refund?.refundMileage.toLocaleString()(6000).toLocaleString()}
+          </div>
         </div>
       </main>
       <Button>

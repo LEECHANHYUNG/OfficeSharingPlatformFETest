@@ -1,11 +1,12 @@
 import axios from 'axios';
-import { getSession, useSession } from 'next-auth/react';
+import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import React from 'react';
 import styled from 'styled-components';
 import Button from '../../ui/Button';
 import Card from '../../ui/Card';
 import Payment from './Payment';
+import Refund from './Refund';
 
 const Wrapper = styled.section`
   position: relative;
@@ -15,7 +16,6 @@ const Wrapper = styled.section`
 
   header {
     font-size: 32px;
-    border-bottom: 3px solid #111;
   }
   .left {
     width: 60%;
@@ -96,6 +96,7 @@ const Detail = (props) => {
     roomType,
     usageState,
     savedMileage,
+    totalPrice,
   } = props.resData;
   const router = useRouter();
   const session = useSession();
@@ -176,7 +177,16 @@ const Detail = (props) => {
         </div>
         <Button onClick={cancelReservationHandler}>예약 취소</Button>
       </StyledCard>
-      <Payment />
+      {Object.keys(props.payData).map((elem) => (
+        <div>
+          <Payment
+            totalPrice={totalPrice}
+            payData={props.payData[elem].payment}
+            key={`payment${elem}`}
+          />
+          <Refund refund={props.payData[elem].refund} key={`refund${elem}`} />
+        </div>
+      ))}
     </Wrapper>
   );
 };

@@ -109,7 +109,7 @@ const CreditCardForm = () => {
         },
       });
       if (response.status === 200) {
-        router.replace('/mypage');
+        router.replace(`/mypage/reservation/${reservationInfo.reservationId}`);
       } else {
         throw new Error(response.data.message);
       }

@@ -56,7 +56,9 @@ const FilterBanner = () => {
         url: '/api/main/filter',
         method: 'post',
         data: {
-          day: inputDateRef.current.value,
+          day:
+            inputDateRef.current.value ||
+            new Date().toLocaleDateString().replace(/. /g, '-').slice(0, -1),
           startTime: selectedStartTime,
           endTime: selectedEndTime,
           city: selectedCity,
@@ -93,7 +95,14 @@ const FilterBanner = () => {
         </button>
 
         <div className="selectOption ">
-          <StyledInput type="date" ref={inputDateRef} />
+          <StyledInput
+            type="date"
+            ref={inputDateRef}
+            min={new Date()
+              .toLocaleDateString()
+              .replace(/. /g, '-')
+              .slice(0, -1)}
+          />
         </div>
         <div className="selectOption ">
           <Time time="start" />
