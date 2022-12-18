@@ -57,20 +57,20 @@ const Wrapper = styled.section`
     }
 
     ul {
-      position: fixed;
+      position: absolute;
       width: 30vw;
-      height: 100%;
+      height: auto;
       background: #2c3e50;
       left: -100%;
-      top: 322px;
       text-align: center;
       transition: all 0.5s;
       z-index: 1000;
     }
     ul li {
       display: block;
-      margin: 50px 0;
-      line-height: 19px;
+      line-height: 40px;
+      text-align: center;
+      color: #111;
     }
 
     #mypageCheck:checked + label ~ ul {
