@@ -41,6 +41,7 @@ const Wrapper = styled.section`
     line-height: 40px;
     background: #111;
     color: #fff;
+    z-index : 1000;
   }
  
   & .line {
@@ -49,9 +50,9 @@ const Wrapper = styled.section`
   }
 
   @media screen and (max-width: 1170px) {
-    top: 50vh;
+    top: 57vh;
     width: 100%;
-    height: 50vh;
+    height: 43vh;
     padding-top : 0;
     &::-webkit-scrollbar {
       display: none;

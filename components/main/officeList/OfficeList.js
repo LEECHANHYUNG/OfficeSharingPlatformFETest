@@ -16,7 +16,7 @@ const Wrapper = styled.div`
     padding-top: 54px;
     top: 57vh;
     width: 100%;
-    height: 50vh;
+    height: 43vh;
   }
 `;
 
