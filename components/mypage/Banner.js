@@ -80,6 +80,10 @@ const Wrapper = styled.section`
 `;
 
 const Banner = () => {
+  const hideBannerHandler = () => {
+    const mypageCheck = document.getElementById('mypageCheck');
+    mypageCheck.checked = false;
+  };
   return (
     <Wrapper>
       <input type="checkbox" id="mypageCheck" />
@@ -88,25 +92,25 @@ const Banner = () => {
       </label>
       <ul>
         <div className="title">이용 관리</div>
-        <li>
+        <li onClick={hideBannerHandler}>
           <Link href="/mypage/usage">예약 내역</Link>
         </li>
-        <li>
+        <li onClick={hideBannerHandler}>
           <Link href="/mypage/comment">댓글 관리</Link>
         </li>
-        <li>
+        <li onClick={hideBannerHandler}>
           <Link href="/mypage/review">후기 관리</Link>
         </li>
-        <li>
+        <li onClick={hideBannerHandler}>
           <Link href="/mypage/mileage">마일리지 관리</Link>
         </li>
         <div className="title">고객 센터</div>
-        <li>
+        <li onClick={hideBannerHandler}>
           <Link href="/mypage/qna">1:1문의</Link>
         </li>
 
         <div className="title">정보 관리</div>
-        <li>
+        <li onClick={hideBannerHandler}>
           <Link href="/mypage/modify">정보 수정</Link>
         </li>
       </ul>

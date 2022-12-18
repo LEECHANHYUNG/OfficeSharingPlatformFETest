@@ -44,6 +44,9 @@ const Wrapper = styled.section`
   .start {
     margin-right: 100px;
   }
+  @media screen and (max-width: 858px) {
+    width: 100vw;
+  }
 `;
 const StyledCard = styled(Card)`
   margin-left: 150px;
@@ -57,6 +60,27 @@ const StyledCard = styled(Card)`
     width: 150px;
     bottom: 20px;
     right: 20px;
+  }
+  @media screen and (max-width: 858px) {
+    width: 98vw;
+    margin-left: 0;
+
+    flex-direction: column;
+    .left,
+    .right {
+      width: 100%;
+    }
+    .data {
+      font-size: 15px;
+      margin-left: 10px;
+    }
+    .reservation-time {
+      width: 100%;
+    }
+    button {
+      width: 30%;
+      font-size: 13px;
+    }
   }
 `;
 const Detail = (props) => {

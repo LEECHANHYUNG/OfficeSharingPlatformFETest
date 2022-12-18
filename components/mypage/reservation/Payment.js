@@ -40,6 +40,18 @@ const StyledCard = styled(Card)`
     align-items: center;
     justify-content: space-around;
   }
+  @media screen and (max-width: 858px) {
+    width: 100%;
+    margin-left: 0px;
+    main {
+      margin-left: 0px;
+    }
+
+    main > div {
+      width: 90%;
+      justify-content: space-between;
+    }
+  }
 `;
 const Payment = () => {
   return (
