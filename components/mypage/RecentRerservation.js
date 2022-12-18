@@ -44,11 +44,12 @@ const Wrapper = styled.section`
   }
   @media screen and (max-width: 1170px) {
     margin-left: 0;
+    padding-left: 50px;
     width: 96vw;
   }
   @media screen and (max-width: 858px) {
     h1 {
-      font-size: 1.2rem;
+      font-size: 1.5rem;
       margin-left: 20px;
     }
     .place-name,

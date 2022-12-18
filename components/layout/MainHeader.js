@@ -7,7 +7,7 @@ import { useSession } from 'next-auth/react';
 import { useDispatch } from 'react-redux';
 import { officeSliceActions } from '../../store/officeList';
 const Nav = styled.nav`
-  position: fixed;  
+  position: fixed;
   top: 0;
   left: 0;
   height: 100px;
@@ -54,7 +54,7 @@ const Nav = styled.nav`
     display: none;
   }
   @media screen and (max-width: 1170px) {
-    ul li a {f
+    ul li a {
       font-size: 16px;
     }
   }
@@ -76,10 +76,8 @@ const Nav = styled.nav`
     ul li {
       display: block;
       margin: 50px 0;
-      line-height : 19px;
+      line-height: 19px;
     }
-   
- 
 
     #check:checked + label ~ ul {
       left: 0;

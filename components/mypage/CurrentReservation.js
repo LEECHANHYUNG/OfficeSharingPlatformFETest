@@ -9,9 +9,9 @@ import 'swiper/css/navigation';
 import { Navigation } from 'swiper';
 
 const Wrapper = styled.section`
-  margin-top: 80px;
-  margin-left: 350px;
-  width: 70vw;
+  margin-top: 150px;
+  margin-left: 360px;
+  width: 80vw;
   h1 {
     font-size: 2rem;
     text-align: left;
@@ -41,11 +41,12 @@ const Wrapper = styled.section`
   }
   @media screen and (max-width: 1170px) {
     margin-left: 0;
+    padding-left: 50px;
     width: 96vw;
   }
   @media screen and (max-width: 858px) {
     h1 {
-      font-size: 1.2rem;
+      font-size: 1.5rem;
       margin-left: 20px;
     }
     .place-name,
