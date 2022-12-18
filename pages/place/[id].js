@@ -131,6 +131,7 @@ export async function getStaticProps(context) {
         props: {
           place: response.data,
         },
+        revalidate: 30,
       };
     } else {
       throw new Error(response.data);

@@ -125,8 +125,9 @@ const ReservationForm = () => {
     endDateArr[2]?.padStart(2, '0');
 
   const session = useSession();
+  console.log(session);
   const sendReservationInfoHandler = async () => {
-    if (!session) {
+    if (session.status === 'unauthenticated') {
       alert('로그인이 필요한 서비스입니다. 로그인 페이지로 이동합니다.');
       router.push('/auth/signin');
     }
