@@ -46,7 +46,7 @@ const Wrapper = styled.section`
     cursor: pointer;
   }
   @media screen and (max-width: 1170px) {
-    width: 100vw;
+    width: 98vw;
     border-right: none;
     text-align: center;
     height: 50px;

@@ -8,13 +8,26 @@ import Card from '../../ui/Card';
 import Payment from './Payment';
 import Refund from './Refund';
 
+const PayMentCard = styled(Card)`
+  border: 1px solid #6a9eff;
+  margin-left: 50px;
+  @media screen and (max-width: 1170px) {
+    margin-left: 50px;
+    width: 90vw;
+  }
+  @media screen and (max-width: 858px) {
+    margin: 0px;
+    width: 98vw;
+  }
+`;
+
 const Wrapper = styled.section`
   position: relative;
-  width: 79vw;
-  float: right;
+  width: 70vw;
+  float: left;
   top: 80px;
 
-  header {
+  h1 {
     font-size: 32px;
   }
   .left {
@@ -22,9 +35,6 @@ const Wrapper = styled.section`
   }
   .right {
     width: 40%;
-  }
-  h3 {
-    font-size: 20px;
   }
   .data {
     font-size: 22px;
@@ -44,8 +54,12 @@ const Wrapper = styled.section`
   .start {
     margin-right: 100px;
   }
-  @media screen and (max-width: 858px) {
-    width: 100vw;
+  @media screen and (max-width: 1170px) {
+    width: 98vw;
+    .data {
+      font-size: 13px;
+      margin-left: 10px;
+    }
   }
 `;
 const StyledCard = styled(Card)`
@@ -60,6 +74,10 @@ const StyledCard = styled(Card)`
     width: 150px;
     bottom: 20px;
     right: 20px;
+  }
+  @media screen and (max-width: 1170px) {
+    margin-left: 50px;
+    width: 90vw;
   }
   @media screen and (max-width: 858px) {
     width: 98vw;
@@ -84,6 +102,7 @@ const StyledCard = styled(Card)`
   }
 `;
 const Detail = (props) => {
+  console.log(props);
   const {
     isAvailableReview,
     placeName,
@@ -172,21 +191,33 @@ const Detail = (props) => {
           </div>
           <div className="saved-mileage">
             <h3>적립 마일리지</h3>
-            <div className="data">{savedMileage || '10,000'}</div>
+            <div className="data">{savedMileage}</div>
           </div>
         </div>
         <Button onClick={cancelReservationHandler}>예약 취소</Button>
       </StyledCard>
-      {Object.keys(props.payData).map((elem) => (
-        <div>
-          <Payment
-            totalPrice={totalPrice}
-            payData={props.payData[elem].payment}
-            key={`payment${elem}`}
-          />
-          <Refund refund={props.payData[elem].refund} key={`refund${elem}`} />
-        </div>
-      ))}
+      <h1>결제 내역</h1>
+      <PayMentCard>
+        <h1>총 결제 금액</h1>
+        <div className="data">{totalPrice.toLocaleString()}</div>
+        {Object.keys(props.payData).map((elem) => (
+          <div>
+            {props.payData[elem].refund ? (
+              <Refund
+                refund={props.payData[elem].refund}
+                key={`refund${elem}`}
+              />
+            ) : (
+              ''
+            )}
+            <Payment
+              totalPrice={totalPrice}
+              payData={props.payData[elem].payment}
+              key={`payment${elem}`}
+            />
+          </div>
+        ))}
+      </PayMentCard>
     </Wrapper>
   );
 };

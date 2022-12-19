@@ -5,25 +5,20 @@ import Card from '../../ui/Card';
 
 const StyledCard = styled(Card)`
   border: 1px solid #6a9eff;
-  margin-left: 150px;
   position: relative;
-  h1 {
-    width: 150px;
-    font-size: 30px;
-    border-bottom: 1px solid #111;
-    padding-bottom: 10px;
-  }
+  width: 90%;
+
   .pay-type {
     position: absolute;
     top: 30px;
-    left: 200px;
+    left: 10px;
   }
   main {
     padding: 50px 0;
     display: flex;
     align-items: flex-start;
     flex-direction: column;
-    margin-left: 200px;
+    margin-left: 50px;
   }
   main > div {
     width: 60%;
@@ -40,11 +35,19 @@ const StyledCard = styled(Card)`
     align-items: center;
     justify-content: space-around;
   }
-  @media screen and (max-width: 858px) {
-    width: 100%;
-    margin-left: 0px;
+  @media screen and (max-width: 1170px) {
+    width: 90%;
     main {
       margin-left: 0px;
+    }
+  }
+  @media screen and (max-width: 858px) {
+    width: 100%;
+    main {
+      margin-left: 0px;
+    }
+    h3 {
+      font-size: 15px;
     }
     .data {
       font-size: 18px;
@@ -54,35 +57,35 @@ const StyledCard = styled(Card)`
       width: 90%;
       justify-content: space-between;
     }
+    .data {
+      line-height: 0px;
+    }
   }
 `;
-const Payment = ({ payData, totalPrice }) => {
+const Payment = ({ payData }) => {
   console.log(payData);
   return (
     <StyledCard>
-      <h1>결제 내역</h1>
       <div className="pay-type">
-        <div className="data">선결제</div>
+        <div className="data">{payData.payType}</div>
       </div>
       <main>
-        <div className="total-price">
-          <h3>총 결제 금액</h3>
-          <div className="data">{totalPrice.toLocaleString()}</div>
-        </div>
         <div className="real-price">
-          <h3>실 결제 금액</h3>
+          <h3>실 결제 </h3>
           <div className="data">{payData.payPrice.toLocaleString()}</div>
         </div>
         <div className="mileage-price">
-          <h3>마일리지 결제 금액</h3>
+          <h3>마일리지 결제 </h3>
           <div className="data">{payData.payMileage.toLocaleString()}</div>
         </div>
       </main>
-      <Button>
-        <a href="https://npg.nicepay.co.kr/issue/IssueLoader.do?TID=nictest04m01162212171859585236&type=0&InnerWin=Y">
-          영수증 확인
-        </a>
-      </Button>
+      {payData.receipt.includes('카카오페이') ? (
+        <div>영수증 : {payData.receipt}</div>
+      ) : (
+        <Button>
+          <a href={payData.receipt}>영수증 확인</a>
+        </Button>
+      )}
     </StyledCard>
   );
 };

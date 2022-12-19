@@ -15,7 +15,6 @@ const Wrapper = styled.section`
     padding-top: 60px;
   }
   @media screen and (max-width: 1170px) {
-    width: 100%;
     margin: 0;
   }
   @media screen and (max-width: 858px) {

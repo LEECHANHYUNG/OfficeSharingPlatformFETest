@@ -5,8 +5,9 @@ import Card from '../../ui/Card';
 
 const StyledCard = styled(Card)`
   border: 1px solid #6a9eff;
-  margin-left: 150px;
   position: relative;
+  width: 90%;
+
   h1 {
     width: 150px;
     font-size: 30px;
@@ -35,19 +36,30 @@ const StyledCard = styled(Card)`
     align-items: center;
     justify-content: space-around;
   }
+  @media screen and (max-width: 1170px) {
+    width: 90%;
+    main {
+      margin-left: 0px;
+    }
+  }
   @media screen and (max-width: 858px) {
     width: 100%;
-    margin-left: 0px;
+    h3 {
+      font-size: 15px;
+    }
     main {
       margin-left: 0px;
     }
     .data {
-      font-size: 18px;
+      font-size: 14px;
       margin: 10px 0;
     }
     main > div {
       width: 90%;
       justify-content: space-between;
+    }
+    main .data {
+      margin-top: 11px;
     }
   }
 `;
@@ -58,27 +70,25 @@ const Payment = ({ refund }) => {
       <main>
         <div className="total-price">
           <h3>환불 일자</h3>
-          <div className="data">{refund?.refundDate || '2022-12-18'}</div>
-          <div className="data">{refund?.refundTime || '21:18:59'}</div>
+          <div className="data">{refund.refundDate}</div>
+          <div className="data">{refund.refundTime}</div>
         </div>
         <div className="real-price">
           <h3>환불 금액</h3>
-          <div className="data">
-            {refund?.refundPrice.toLocaleString() || (14000).toLocaleString()}
-          </div>
+          <div className="data">{refund.refundPrice.toLocaleString()}</div>
         </div>
         <div className="mileage-price">
-          <h3>마일리지 결제 금액</h3>
-          <div className="data">
-            {refund?.refundMileage.toLocaleString()(6000).toLocaleString()}
-          </div>
+          <h3>마일리지 결제 </h3>
+          <div className="data">{refund.refundMileage.toLocaleString()}</div>
         </div>
       </main>
-      <Button>
-        <a href="https://npg.nicepay.co.kr/issue/IssueLoader.do?TID=nictest04m01162212171859585236&type=0&InnerWin=Y">
-          영수증 확인
-        </a>
-      </Button>
+      {refund.refundReceipt.includes('카카오페이') ? (
+        <div>영수증 : {refund.refundReceipt}</div>
+      ) : (
+        <Button>
+          <a href={refund.refundReceipt}>영수증 확인</a>
+        </Button>
+      )}
     </StyledCard>
   );
 };
