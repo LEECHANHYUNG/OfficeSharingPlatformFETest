@@ -13,11 +13,15 @@ const Name = ({ setInputName }) => {
   const dispatch = useDispatch();
   const nameIsValid = useSelector((state) => state.auth.nameIsValid);
   const nameChangeHandler = (e) => {
-    setInputName(e.target.value);
+    if (setInputName) {
+      setInputName(e.target.value);
+    }
     dispatch(authSliceActions.getNameValid(e.target.value));
   };
   const validateNameHandler = (e) => {
-    setInputName(e.target.value);
+    if (setInputName) {
+      setInputName(e.target.value);
+    }
     dispatch(authSliceActions.getNameValid(e.target.value));
     setNameBlur(true);
   };

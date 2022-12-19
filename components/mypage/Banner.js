@@ -111,7 +111,7 @@ const Banner = () => {
 
         <div className="title">정보 관리</div>
         <li onClick={hideBannerHandler}>
-          <Link href="/mypage/modify">정보 수정</Link>
+          <Link href="/mypage/edit">정보 수정</Link>
         </li>
       </ul>
     </Wrapper>

@@ -11,15 +11,19 @@ const Wrapper = styled.div`
     margin: 0;
   }
 `;
-const Phone = ({ getPhoneNumber }) => {
+const Phone = ({ getPhoneNumber, placeholder }) => {
+  const [phoneNumber, setPhoneNumber] = useState();
   const [phoneBlur, setPhoneBlur] = useState(false);
   const dispatch = useDispatch();
   const phoneIsValid = useSelector((state) => state.auth.phoneIsValid);
   const phoneChangeHandler = (e) => {
+    setPhoneNumber(e.target.value.slice(0, 11));
     dispatch(authSliceActions.getPhoneValid(e.target.value));
   };
   const validatePhoneHandler = (e) => {
-    getPhoneNumber(e.target.value);
+    if (getPhoneNumber) {
+      getPhoneNumber(e.target.value);
+    }
     dispatch(authSliceActions.getPhoneValid(e.target.value));
     setPhoneBlur(true);
   };
@@ -32,11 +36,11 @@ const Phone = ({ getPhoneNumber }) => {
       <Input
         type="number"
         name="phone"
-        placeholder="전화번호*"
+        placeholder={placeholder || '전화번호*'}
         onChange={phoneChangeHandler}
         onBlur={validatePhoneHandler}
         className={`${phoneIsValid === false ? ' invalid' : ''}`}
-        maxLength="13"
+        value={phoneNumber}
         required
       />
     </Wrapper>

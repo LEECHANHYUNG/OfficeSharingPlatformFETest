@@ -27,6 +27,7 @@ const Input = forwardRef((props, ref) => (
     required={props.required || null}
     minLength={props.minLength || null}
     maxLength={props.maxLength || null}
+    value={props.value || null}
     ref={ref || null}
   />
 ));

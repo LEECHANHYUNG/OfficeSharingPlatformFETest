@@ -10,6 +10,7 @@ import Qna from '../../components/mypage/qna/Qna';
 import { getSession } from 'next-auth/react';
 import axios from 'axios';
 import Review from '../../components/mypage/review/Review';
+import Edit from '../../components/mypage/Edit/Edit';
 const Wrapper = styled.section`
   width: 100%;
   .item {
@@ -77,6 +78,11 @@ const Mypage = (props) => {
             item={props.qnaData}
             paginationData={props.paginationData.maxPage}
           />
+        </section>
+      )}
+      {router.query.item === 'edit' && (
+        <section className="item">
+          <Edit item={props.userInfoData} />
         </section>
       )}
     </Wrapper>
