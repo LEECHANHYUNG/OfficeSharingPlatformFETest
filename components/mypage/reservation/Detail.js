@@ -10,7 +10,7 @@ import Refund from './Refund';
 
 const PayMentCard = styled(Card)`
   border: 1px solid #6a9eff;
-  margin-left: 50px;
+  margin-left: 150px;
   @media screen and (max-width: 1170px) {
     margin-left: 50px;
     width: 90vw;
@@ -57,8 +57,13 @@ const Wrapper = styled.section`
   @media screen and (max-width: 1170px) {
     width: 98vw;
     .data {
-      font-size: 13px;
+      font-size: 22px;
       margin-left: 10px;
+    }
+  }
+  @media screen and (max-width: 858px) {
+    .data {
+      font-size: 13px;
     }
   }
 `;

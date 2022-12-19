@@ -19,10 +19,9 @@ const StyledCard = styled(Card)`
     display: flex;
     align-items: flex-start;
     flex-direction: column;
-    margin-left: 200px;
   }
   main > div {
-    width: 60%;
+    width: 80%;
     display: flex;
     align-items: center;
     justify-content: space-between;
